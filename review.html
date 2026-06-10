@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check your answers – Application Form</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{overflow-y:scroll}
+    body{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#0b0c0c;background:#fff}
+    a{color:#1d70b8}
+    a:hover{color:#003078}
+    a:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c;text-decoration:none}
+    .app-header{background:#0b0c0c;border-bottom:10px solid #1d70b8}
+    .app-header__container{max-width:960px;margin:0 auto;padding:0 30px;display:flex;align-items:center;min-height:60px;gap:20px}
+    .app-header__logo{color:#fff;text-decoration:none;font-weight:700;font-size:22px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:10px}
+    .app-header__logo:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c}
+    .app-header__service{color:#fff;font-size:15px;padding-left:20px;border-left:1px solid rgba(255,255,255,.3)}
+    .govuk-width-container{max-width:960px;margin:0 auto;padding:0 30px}
+    main{padding:30px 0 60px}
+    .govuk-back-link{font-size:14px;color:#0b0c0c;text-decoration:underline;display:inline-block;margin-bottom:25px;padding-left:18px;position:relative}
+    .govuk-back-link::before{content:"";position:absolute;left:2px;top:50%;width:7px;height:7px;border-left:2px solid #0b0c0c;border-bottom:2px solid #0b0c0c;transform:translateY(-60%) rotate(45deg)}
+    .govuk-back-link:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c;text-decoration:none}
+    h1.govuk-heading-xl{font-size:48px;line-height:1.04;font-weight:700;color:#0b0c0c;margin-bottom:30px}
+    h2.govuk-heading-m{font-size:24px;line-height:1.25;font-weight:700;color:#0b0c0c;margin:30px 0 10px;border-top:2px solid #0b0c0c;padding-top:20px}
+    h2.govuk-heading-m:first-of-type{border-top:none;padding-top:0;margin-top:0}
+    .govuk-summary-list{width:100%;margin-bottom:5px;font-size:19px;border-top:1px solid #b1b4b6}
+    .govuk-summary-list__row{border-bottom:1px solid #b1b4b6;padding:10px 0;display:flex;gap:20px;align-items:flex-start}
+    .govuk-summary-list__key{flex:0 0 30%;font-weight:700;word-break:break-word;min-width:0}
+    .govuk-summary-list__value{flex:1 1 50%;word-break:break-word;min-width:0;color:#0b0c0c}
+    .govuk-summary-list__value--empty{color:#505a5f;font-style:italic}
+    .govuk-summary-list__actions{flex:0 0 auto;white-space:nowrap}
+    .govuk-summary-list__actions a{font-size:16px}
+    .govuk-visually-hidden{position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+    .govuk-button{display:inline-block;background:#00703c;color:#fff;border:2px solid transparent;padding:8px 20px;font-size:18px;font-weight:700;line-height:1.5;cursor:pointer;font-family:inherit;text-decoration:none;border-radius:0;box-shadow:0 2px 0 #002d18;margin-bottom:22px;-webkit-appearance:none;appearance:none}
+    .govuk-button:hover{background:#005a30}
+    .govuk-button:focus{outline:3px solid #ffdd00;outline-offset:0;background:#ffdd00;color:#0b0c0c;box-shadow:0 2px 0 #0b0c0c}
+    .govuk-button--warning{background:#d4351c;box-shadow:0 2px 0 #55140b;color:#fff;font-size:20px;padding:12px 24px}
+    .govuk-button--warning:hover{background:#aa2a16}
+    .govuk-button--warning:focus{outline:3px solid #ffdd00;outline-offset:0;background:#ffdd00;color:#0b0c0c}
+    .govuk-button--warning[disabled]{opacity:.5;cursor:not-allowed;pointer-events:none}
+    .submit-section{margin-top:40px;border-top:2px solid #0b0c0c;padding-top:30px}
+    @media(max-width:40em){
+      .app-header__container{padding:0 15px}
+      .govuk-width-container{padding:0 15px}
+      h1.govuk-heading-xl{font-size:27px}
+      .govuk-summary-list__row{flex-direction:column;gap:4px}
+      .govuk-summary-list__key,.govuk-summary-list__value{flex:none;width:100%}
+      .govuk-button--warning{width:100%;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Residency Application</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="page5.html" class="govuk-back-link">Back</a>
+
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      <!-- Personal details -->
+      <h2 class="govuk-heading-m">Personal details</h2>
+      <dl class="govuk-summary-list" id="summary-personal"></dl>
+
+      <!-- Contact details -->
+      <h2 class="govuk-heading-m">Contact details</h2>
+      <dl class="govuk-summary-list" id="summary-contact"></dl>
+
+      <!-- Employment -->
+      <h2 class="govuk-heading-m">Employment</h2>
+      <dl class="govuk-summary-list" id="summary-employment"></dl>
+
+      <!-- Document -->
+      <h2 class="govuk-heading-m">Identity document</h2>
+      <dl class="govuk-summary-list" id="summary-document"></dl>
+
+      <!-- Additional info -->
+      <h2 class="govuk-heading-m">Additional information</h2>
+      <dl class="govuk-summary-list" id="summary-additional"></dl>
+
+      <!-- Submit -->
+      <div class="submit-section">
+        <p style="font-size:19px;margin-bottom:20px;">
+          By submitting this application you confirm that the information you have provided is correct and complete.
+        </p>
+        <button type="button" class="govuk-button govuk-button--warning" disabled>
+          Submit application
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      function esc(s) {
+        return String(s)
+          .replace(/&/g,'&amp;')
+          .replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;')
+          .replace(/"/g,'&quot;');
+      }
+
+      function row(key, value, page, label) {
+        var isEmpty = !value || value === 'Not provided';
+        var valClass = isEmpty ? 'govuk-summary-list__value govuk-summary-list__value--empty' : 'govuk-summary-list__value';
+        return '<div class="govuk-summary-list__row">' +
+          '<dt class="govuk-summary-list__key">' + esc(key) + '</dt>' +
+          '<dd class="' + valClass + '">' + esc(value || 'Not provided') + '</dd>' +
+          '<dd class="govuk-summary-list__actions">' +
+            '<a href="' + page + '?change=true">Change' +
+              '<span class="govuk-visually-hidden"> ' + esc(label) + '</span>' +
+            '</a>' +
+          '</dd>' +
+        '</div>';
+      }
+
+      function get(k) { return sessionStorage.getItem('govuk_' + k) || ''; }
+
+      // Personal details
+      var day   = get('dob-day');
+      var month = get('dob-month');
+      var year  = get('dob-year');
+      var dob   = (day || month || year) ? [day, month, year].filter(Boolean).join(' / ') : '';
+      document.getElementById('summary-personal').innerHTML =
+        row('Full name',     get('fullname'),            'page1.html', 'full name') +
+        row('Date of birth', dob,                        'page1.html', 'date of birth');
+
+      // Contact details
+      document.getElementById('summary-contact').innerHTML =
+        row('Email address', get('email'),    'page2.html', 'email address') +
+        row('Phone number',  get('phone'),    'page2.html', 'phone number') +
+        row('Postcode',      get('postcode'), 'page2.html', 'postcode');
+
+      // Employment
+      document.getElementById('summary-employment').innerHTML =
+        row('Employment status', get('employment'), 'page3.html', 'employment status');
+
+      // Document
+      document.getElementById('summary-document').innerHTML =
+        row('Type of identity document',   get('doc-type'), 'page4.html', 'identity document type') +
+        row('Document reference number',   get('doc-ref'),  'page4.html', 'document reference number');
+
+      // Additional
+      var applyRaw = sessionStorage.getItem('govuk_apply');
+      var applyVal = '';
+      if (applyRaw) {
+        try { applyVal = JSON.parse(applyRaw).join(', '); } catch(e) { applyVal = applyRaw; }
+      }
+      document.getElementById('summary-additional').innerHTML =
+        row('Which of the following apply', applyVal, 'page5.html', 'which of the following apply');
+    })();
+  </script>
+</body>
+</html>

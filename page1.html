@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal details – Application Form</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{overflow-y:scroll}
+    body{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#0b0c0c;background:#fff}
+    a{color:#1d70b8}
+    a:hover{color:#003078}
+    a:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c;text-decoration:none}
+    .app-header{background:#0b0c0c;border-bottom:10px solid #1d70b8}
+    .app-header__container{max-width:960px;margin:0 auto;padding:0 30px;display:flex;align-items:center;min-height:60px;gap:20px}
+    .app-header__logo{color:#fff;text-decoration:none;font-weight:700;font-size:22px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:10px}
+    .app-header__logo svg{flex-shrink:0}
+    .app-header__logo:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c}
+    .app-header__service{color:#fff;font-size:15px;padding-left:20px;border-left:1px solid rgba(255,255,255,.3)}
+    .govuk-width-container{max-width:960px;margin:0 auto;padding:0 30px}
+    main{padding:30px 0 60px}
+    .govuk-back-link{font-size:14px;color:#0b0c0c;text-decoration:underline;display:inline-block;margin-bottom:25px;padding-left:18px;position:relative}
+    .govuk-back-link::before{content:"";position:absolute;left:2px;top:50%;width:7px;height:7px;border-left:2px solid #0b0c0c;border-bottom:2px solid #0b0c0c;transform:translateY(-60%) rotate(45deg)}
+    .govuk-back-link:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c;text-decoration:none}
+    h1.govuk-heading-xl{font-size:48px;line-height:1.04;font-weight:700;color:#0b0c0c;margin-bottom:30px}
+    .govuk-form-group{margin-bottom:25px}
+    .govuk-label{display:block;font-size:19px;font-weight:700;color:#0b0c0c;margin-bottom:5px}
+    .govuk-hint{color:#505a5f;font-size:16px;margin-bottom:10px}
+    .govuk-input{border:2px solid #0b0c0c;padding:5px 10px;font-size:19px;font-family:inherit;color:#0b0c0c;background:#fff;width:100%;max-width:500px;display:block;border-radius:0;-webkit-appearance:none;appearance:none}
+    .govuk-input:focus{outline:3px solid #ffdd00;outline-offset:0;box-shadow:inset 0 0 0 2px #0b0c0c}
+    .govuk-input--width-2{max-width:2.6em;width:2.6em}
+    .govuk-input--width-4{max-width:4.5em;width:4.5em}
+    .govuk-fieldset{border:0;padding:0;margin:0 0 15px}
+    .govuk-fieldset legend{font-size:24px;font-weight:700;margin-bottom:10px;display:block;color:#0b0c0c}
+    .govuk-date-input{display:flex;gap:20px;flex-wrap:wrap;align-items:flex-end}
+    .govuk-date-input__item{display:flex;flex-direction:column}
+    .govuk-date-input__item .govuk-label{font-size:16px;font-weight:700;margin-bottom:5px}
+    .govuk-button{display:inline-block;background:#00703c;color:#fff;border:2px solid transparent;padding:8px 20px;font-size:18px;font-weight:700;line-height:1.5;cursor:pointer;font-family:inherit;text-decoration:none;border-radius:0;box-shadow:0 2px 0 #002d18;margin-bottom:22px;-webkit-appearance:none;appearance:none}
+    .govuk-button:hover{background:#005a30}
+    .govuk-button:focus{outline:3px solid #ffdd00;outline-offset:0;background:#ffdd00;color:#0b0c0c;box-shadow:0 2px 0 #0b0c0c}
+    @media(max-width:40em){
+      .app-header__container{padding:0 15px}
+      .govuk-width-container{padding:0 15px}
+      h1.govuk-heading-xl{font-size:27px}
+      .govuk-input{max-width:100%}
+      .govuk-button{width:100%;text-align:center}
+    }
+  </style>
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Residency Application</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="index.html" class="govuk-back-link">Back</a>
+
+      <h1 class="govuk-heading-xl">Personal details</h1>
+
+      <form action="page2.html" method="GET" novalidate>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="fullname">
+            Full name
+          </label>
+          <div class="govuk-hint" id="fullname-hint">
+            Enter your name exactly as it appears on your identity document
+          </div>
+          <input class="govuk-input"
+                 type="text"
+                 id="fullname"
+                 name="fullname"
+                 autocomplete="name"
+                 aria-describedby="fullname-hint">
+        </div>
+
+        <fieldset class="govuk-fieldset" aria-describedby="dob-hint">
+          <legend>Date of birth</legend>
+          <div class="govuk-hint" id="dob-hint">For example, 27 3 1990</div>
+          <div class="govuk-date-input">
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="dob-day">Day</label>
+              <input class="govuk-input govuk-input--width-2"
+                     type="number"
+                     id="dob-day"
+                     name="dob-day"
+                     min="1" max="31"
+                     inputmode="numeric"
+                     autocomplete="bday-day">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="dob-month">Month</label>
+              <input class="govuk-input govuk-input--width-2"
+                     type="number"
+                     id="dob-month"
+                     name="dob-month"
+                     min="1" max="12"
+                     inputmode="numeric"
+                     autocomplete="bday-month">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="dob-year">Year</label>
+              <input class="govuk-input govuk-input--width-4"
+                     type="number"
+                     id="dob-year"
+                     name="dob-year"
+                     min="1900" max="2099"
+                     inputmode="numeric"
+                     autocomplete="bday-year">
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      // Pre-fill from sessionStorage on page load
+      ['fullname','dob-day','dob-month','dob-year'].forEach(function(k) {
+        var v = sessionStorage.getItem('govuk_' + k);
+        if (v) { var el = document.getElementById(k); if (el) el.value = v; }
+      });
+
+      // Save to sessionStorage on submit; handle change-mode
+      document.querySelector('form').addEventListener('submit', function(e) {
+        sessionStorage.setItem('govuk_fullname',   document.getElementById('fullname').value);
+        sessionStorage.setItem('govuk_dob-day',    document.getElementById('dob-day').value);
+        sessionStorage.setItem('govuk_dob-month',  document.getElementById('dob-month').value);
+        sessionStorage.setItem('govuk_dob-year',   document.getElementById('dob-year').value);
+
+        if (new URLSearchParams(window.location.search).get('change') === 'true') {
+          e.preventDefault();
+          window.location.href = 'review.html';
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
