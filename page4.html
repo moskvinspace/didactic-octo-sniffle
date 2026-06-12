@@ -4,42 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document details – Application Form</title>
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{overflow-y:scroll}
-    body{font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;font-size:16px;line-height:1.5;color:#0b0c0c;background:#fff}
-    a{color:#1d70b8}
-    a:hover{color:#003078}
-    a:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c;text-decoration:none}
-    .app-header{background:#0b0c0c;border-bottom:10px solid #1d70b8}
-    .app-header__container{max-width:960px;margin:0 auto;padding:0 30px;display:flex;align-items:center;min-height:60px;gap:20px}
-    .app-header__logo{color:#fff;text-decoration:none;font-weight:700;font-size:22px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:10px}
-    .app-header__logo:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c}
-    .app-header__service{color:#fff;font-size:15px;padding-left:20px;border-left:1px solid rgba(255,255,255,.3)}
-    .govuk-width-container{max-width:960px;margin:0 auto;padding:0 30px}
-    main{padding:30px 0 60px}
-    .govuk-back-link{font-size:14px;color:#0b0c0c;text-decoration:underline;display:inline-block;margin-bottom:25px;padding-left:18px;position:relative}
-    .govuk-back-link::before{content:"";position:absolute;left:2px;top:50%;width:7px;height:7px;border-left:2px solid #0b0c0c;border-bottom:2px solid #0b0c0c;transform:translateY(-60%) rotate(45deg)}
-    .govuk-back-link:focus{background:#ffdd00;outline:3px solid transparent;color:#0b0c0c;box-shadow:0 -2px #ffdd00,0 4px #0b0c0c;text-decoration:none}
-    h1.govuk-heading-xl{font-size:48px;line-height:1.04;font-weight:700;color:#0b0c0c;margin-bottom:30px}
-    .govuk-form-group{margin-bottom:25px}
-    .govuk-label{display:block;font-size:19px;font-weight:700;color:#0b0c0c;margin-bottom:5px}
-    .govuk-hint{color:#505a5f;font-size:16px;margin-bottom:10px}
-    .govuk-select{font-size:19px;font-family:inherit;border:2px solid #0b0c0c;background:#fff;color:#0b0c0c;padding:5px 8px;width:100%;max-width:500px;display:block;border-radius:0}
-    .govuk-select:focus{outline:3px solid #ffdd00;outline-offset:0;box-shadow:inset 0 0 0 2px #0b0c0c}
-    .govuk-input{border:2px solid #0b0c0c;padding:5px 10px;font-size:19px;font-family:inherit;color:#0b0c0c;background:#fff;width:100%;max-width:500px;display:block;border-radius:0;-webkit-appearance:none;appearance:none}
-    .govuk-input:focus{outline:3px solid #ffdd00;outline-offset:0;box-shadow:inset 0 0 0 2px #0b0c0c}
-    .govuk-button{display:inline-block;background:#00703c;color:#fff;border:2px solid transparent;padding:8px 20px;font-size:18px;font-weight:700;line-height:1.5;cursor:pointer;font-family:inherit;text-decoration:none;border-radius:0;box-shadow:0 2px 0 #002d18;margin-bottom:22px;-webkit-appearance:none;appearance:none}
-    .govuk-button:hover{background:#005a30}
-    .govuk-button:focus{outline:3px solid #ffdd00;outline-offset:0;background:#ffdd00;color:#0b0c0c;box-shadow:0 2px 0 #0b0c0c}
-    @media(max-width:40em){
-      .app-header__container{padding:0 15px}
-      .govuk-width-container{padding:0 15px}
-      h1.govuk-heading-xl{font-size:27px}
-      .govuk-input,.govuk-select{max-width:100%}
-      .govuk-button{width:100%;text-align:center}
-    }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
   <header class="app-header" role="banner">
@@ -80,12 +45,22 @@
           </select>
         </div>
 
+        <!-- Conditional reveal: only visible when "Other" is selected. -->
+        <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-doc-other">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="doc-other-desc">Describe your document</label>
+            <div class="govuk-hint" id="doc-other-desc-hint">For example, travel document or residence card</div>
+            <input class="govuk-input" type="text" id="doc-other-desc" name="doc-other-desc"
+                   autocomplete="off" aria-describedby="doc-other-desc-hint">
+          </div>
+        </div>
+
         <div class="govuk-form-group">
           <label class="govuk-label" for="doc-ref">
             Document reference number
           </label>
           <div class="govuk-hint" id="doc-ref-hint">
-            For example, 123456789 or AB1234567
+            Between 6 and 12 letters or numbers, for example 123456789 or AB1234567
           </div>
           <input class="govuk-input"
                  type="text"
@@ -95,32 +70,51 @@
                  aria-describedby="doc-ref-hint">
         </div>
 
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="doc-expiry">
+            Document expiry date
+          </label>
+          <div class="govuk-hint" id="doc-expiry-hint">
+            The document must not be expired
+          </div>
+          <input class="govuk-input govuk-input--width-10"
+                 type="date"
+                 id="doc-expiry"
+                 name="doc-expiry"
+                 aria-describedby="doc-expiry-hint">
+        </div>
+
         <button type="submit" class="govuk-button">Continue</button>
       </form>
     </main>
   </div>
 
+  <script src="assets/form.js"></script>
   <script>
     (function () {
-      var docType = sessionStorage.getItem('govuk_doc-type');
-      if (docType) {
-        var sel = document.getElementById('doc-type');
-        for (var i = 0; i < sel.options.length; i++) {
-          if (sel.options[i].value === docType) { sel.selectedIndex = i; break; }
-        }
+      var select = document.getElementById('doc-type');
+      var conditional = document.getElementById('conditional-doc-other');
+
+      function toggleReveal() {
+        conditional.classList.toggle('govuk-radios__conditional--hidden', select.value !== 'Other');
       }
-      var docRef = sessionStorage.getItem('govuk_doc-ref');
-      if (docRef) document.getElementById('doc-ref').value = docRef;
+      select.addEventListener('change', toggleReveal);
 
-      document.querySelector('form').addEventListener('submit', function(e) {
-        sessionStorage.setItem('govuk_doc-type', document.getElementById('doc-type').value);
-        sessionStorage.setItem('govuk_doc-ref',  document.getElementById('doc-ref').value);
-
-        if (new URLSearchParams(window.location.search).get('change') === 'true') {
-          e.preventDefault();
-          window.location.href = 'review.html';
-        }
+      GovukForm.init({
+        next: 'page5.html',
+        fields: [
+          { key: 'doc-type', kind: 'text', required: 'Select the type of identity document' },
+          { key: 'doc-other-desc', kind: 'text',
+            requiredIf: function (values) {
+              return values['doc-type'] === 'Other' ? 'Describe your identity document' : null;
+            } },
+          { key: 'doc-ref', kind: 'text', required: 'Enter your document reference number',
+            validate: GovukForm.validators.docRef },
+          { key: 'doc-expiry', kind: 'text', required: 'Enter the document expiry date',
+            validate: GovukForm.validators.futureDate }
+        ]
       });
+      toggleReveal();
     })();
   </script>
 </body>

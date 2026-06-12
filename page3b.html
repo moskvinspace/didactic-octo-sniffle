@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business details – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Residency Application</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="page3.html" class="govuk-back-link">Back</a>
+
+      <h1 class="govuk-heading-xl">Business details</h1>
+      <p class="govuk-body">You told us you are self-employed. Tell us about your business.</p>
+
+      <form action="page4.html" method="GET" novalidate>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="business-desc">
+            Describe your business activities
+          </label>
+          <div class="govuk-hint" id="business-desc-hint">
+            Briefly describe what your business does, in 200 characters or fewer
+          </div>
+          <textarea class="govuk-textarea"
+                    id="business-desc"
+                    name="business-desc"
+                    rows="4"
+                    aria-describedby="business-desc-hint business-desc-count"></textarea>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="business-start">
+            Business start date
+          </label>
+          <div class="govuk-hint" id="business-start-hint">
+            The date you started trading
+          </div>
+          <input class="govuk-input govuk-input--width-10"
+                 type="date"
+                 id="business-start"
+                 name="business-start"
+                 aria-describedby="business-start-hint">
+        </div>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="assets/form.js"></script>
+  <script>
+    GovukForm.init({
+      next: 'page4.html',
+      fields: [
+        { key: 'business-desc', kind: 'text', required: 'Enter a description of your business activities',
+          maxLength: 200,
+          validate: GovukForm.validators.maxLength(200, 'Business description') },
+        { key: 'business-start', kind: 'text', required: 'Enter the date your business started trading',
+          validate: GovukForm.validators.pastDate }
+      ]
+    });
+  </script>
+</body>
+</html>
