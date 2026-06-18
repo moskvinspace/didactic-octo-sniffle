@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirm your name – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Residency Application</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="index.html" class="govuk-back-link">Back</a>
+
+      <h1 class="govuk-heading-xl">Confirm your name</h1>
+
+      <p class="govuk-body">
+        Enter your full name exactly as it appears on your identity document.
+      </p>
+
+      <form action="review.html" method="GET" novalidate>
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="fullname">
+            Full name
+          </label>
+          <div class="govuk-hint" id="fullname-hint">
+            Enter your name exactly as it appears on your identity document
+          </div>
+          <input class="govuk-input"
+                 type="text"
+                 id="fullname"
+                 name="fullname"
+                 autocomplete="name"
+                 aria-describedby="fullname-hint">
+        </div>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <!--
+    A "flaky control" test page for fill agents that read back what they typed.
+
+    The Full name input RESISTS being filled: a script blanks its value right after
+    any text is entered, while a per-field "resist budget" remains. To anything that
+    types into the box and trusts the typing succeeded, the field looks filled; to
+    anything that re-reads the element value afterwards, the box is empty. That is
+    the "the write was reported OK but the control did not take it" failure a careful
+    agent should catch on read-back and retry.
+
+      ?resist=1   (default) — the field resists the FIRST write, then accepts.
+                  An agent that re-reads, sees the empty box, and re-types should
+                  succeed on the retry, then Continue to the review page.
+      ?resist=999 — the field resists far longer than any bounded retry budget,
+                  so a re-reading agent should give up and flag the field for a
+                  human; the page stays put because Continue requires a value.
+
+    Generic test fixture — no assumption about which agent is under test.
+    The resist script runs BEFORE the shared form engine so the blanking wins.
+  -->
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var resist = parseInt(params.get('resist'), 10);
+      if (isNaN(resist)) resist = 1;
+
+      var el = document.getElementById('fullname');
+      // Blank the value synchronously on input while the resist budget holds, so any
+      // asynchronous read of the element value (after the event loop yields) sees an
+      // empty box. Decrement per input event; once the budget is spent, writes stick.
+      el.addEventListener('input', function () {
+        if (resist <= 0) return;
+        if (el.value !== '') {
+          el.value = '';
+          resist--;
+        }
+      });
+    })();
+  </script>
+
+  <script src="assets/form.js"></script>
+  <script>
+    GovukForm.init({
+      next: 'review.html',
+      fields: [
+        { key: 'fullname', kind: 'text', required: 'Enter your full name' }
+      ]
+    });
+  </script>
+</body>
+</html>
