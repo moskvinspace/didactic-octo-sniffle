@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English language and money – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Switch to a Skilled Worker visa</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="sw-page4.html" class="govuk-back-link">Back</a>
+
+      <span class="govuk-caption-l">Switch to a Skilled Worker visa</span>
+      <h1 class="govuk-heading-xl">English language and money</h1>
+
+      <form action="sw-review.html" method="GET" novalidate>
+
+        <fieldset class="govuk-fieldset">
+          <legend>How do you meet the English language requirement?</legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="english-degree" name="english" type="radio" value="Degree taught in English">
+              <label class="govuk-label govuk-radios__label" for="english-degree">Degree taught in English</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="english-selt" name="english" type="radio" value="Passed a Secure English Language Test (SELT)">
+              <label class="govuk-label govuk-radios__label" for="english-selt">Passed a Secure English Language Test (SELT)</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="english-national" name="english" type="radio" value="National of a majority English-speaking country">
+              <label class="govuk-label govuk-radios__label" for="english-national">National of a majority English-speaking country</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="savings">
+            Money available to support yourself, in pounds
+          </label>
+          <div class="govuk-hint" id="savings-hint">
+            Your personal savings held for at least 28 days
+          </div>
+          <input class="govuk-input govuk-input--width-10" type="text" id="savings" name="savings" inputmode="numeric" aria-describedby="savings-hint">
+        </div>
+
+        <fieldset class="govuk-fieldset">
+          <legend>Will your sponsor cover your maintenance?</legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="maintenance-yes" name="maintenance" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="maintenance-yes">Yes</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="maintenance-no" name="maintenance" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="maintenance-no">No</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="govuk-fieldset">
+          <legend>Do you have any criminal convictions?</legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="convictions-yes" name="convictions" type="radio" value="Yes">
+              <label class="govuk-label govuk-radios__label" for="convictions-yes">Yes</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="convictions-no" name="convictions" type="radio" value="No">
+              <label class="govuk-label govuk-radios__label" for="convictions-no">No</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="extra-info">
+            Is there anything else you want to tell the caseworker?
+          </label>
+          <textarea class="govuk-textarea" id="extra-info" name="extra-info" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="assets/form.js"></script>
+  <script>
+    GovukForm.init({
+      next: 'sw-review.html',
+      fields: [
+        { key: 'english', kind: 'radio', required: 'Select how you meet the English language requirement' },
+        { key: 'savings', kind: 'text', required: 'Enter the money available to support yourself' },
+        { key: 'maintenance', kind: 'radio', required: 'Select whether your sponsor will cover your maintenance' },
+        { key: 'convictions', kind: 'radio', required: 'Select whether you have any criminal convictions' },
+        { key: 'extra-info', kind: 'text' }
+      ]
+    });
+  </script>
+</body>
+</html>

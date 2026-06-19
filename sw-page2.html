@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact details – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Switch to a Skilled Worker visa</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="sw-page1.html" class="govuk-back-link">Back</a>
+
+      <span class="govuk-caption-l">Switch to a Skilled Worker visa</span>
+      <h1 class="govuk-heading-xl">Contact details</h1>
+
+      <form action="sw-page3.html" method="GET" novalidate>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="email">
+            Email address
+          </label>
+          <div class="govuk-hint" id="email-hint">
+            We'll only use this to contact you about your application
+          </div>
+          <input class="govuk-input" type="email" id="email" name="email" autocomplete="email" inputmode="email" aria-describedby="email-hint">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="telephone">
+            UK telephone number
+          </label>
+          <div class="govuk-hint" id="telephone-hint">
+            For example, 07700 900123
+          </div>
+          <input class="govuk-input govuk-input--width-20" type="tel" id="telephone" name="telephone" autocomplete="tel" inputmode="tel" aria-describedby="telephone-hint">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-line-1">
+            Building and street
+          </label>
+          <input class="govuk-input" type="text" id="address-line-1" name="address-line-1" autocomplete="address-line1">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="town">
+            Town or city
+          </label>
+          <input class="govuk-input govuk-input--width-20" type="text" id="town" name="town" autocomplete="address-level2">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="postcode">
+            Postcode
+          </label>
+          <div class="govuk-hint" id="postcode-hint">
+            For example, M1 4WP
+          </div>
+          <input class="govuk-input govuk-input--width-10" type="text" id="postcode" name="postcode" autocomplete="postal-code" aria-describedby="postcode-hint">
+        </div>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="assets/form.js"></script>
+  <script>
+    GovukForm.init({
+      next: 'sw-page3.html',
+      fields: [
+        { key: 'email', kind: 'text', required: 'Enter your email address',
+          validate: GovukForm.validators.email },
+        { key: 'telephone', kind: 'text', required: 'Enter your UK telephone number',
+          validate: GovukForm.validators.ukPhone },
+        { key: 'address-line-1', kind: 'text', required: 'Enter the building and street' },
+        { key: 'town', kind: 'text', required: 'Enter the town or city' },
+        { key: 'postcode', kind: 'text', required: 'Enter your postcode',
+          validate: GovukForm.validators.ukPostcode }
+      ]
+    });
+  </script>
+</body>
+</html>

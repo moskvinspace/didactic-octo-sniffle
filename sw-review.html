@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check your answers – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Switch to a Skilled Worker visa</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="sw-page5.html" class="govuk-back-link">Back</a>
+
+      <span class="govuk-caption-l">Switch to a Skilled Worker visa</span>
+      <h1 class="govuk-heading-xl">Check your answers</h1>
+
+      <h2 class="govuk-heading-m">Personal details</h2>
+      <dl class="govuk-summary-list" id="summary-personal"></dl>
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+      <dl class="govuk-summary-list" id="summary-contact"></dl>
+
+      <h2 class="govuk-heading-m">Identity and current permission</h2>
+      <dl class="govuk-summary-list" id="summary-identity"></dl>
+
+      <h2 class="govuk-heading-m">Job and sponsorship</h2>
+      <dl class="govuk-summary-list" id="summary-job"></dl>
+
+      <h2 class="govuk-heading-m">English language and money</h2>
+      <dl class="govuk-summary-list" id="summary-english"></dl>
+
+      <div class="submit-section">
+        <p style="font-size:19px;margin-bottom:20px;">
+          By submitting this application you confirm that the information you have provided is correct and complete.
+        </p>
+        <button type="button" class="govuk-button govuk-button--warning" disabled>
+          Submit application
+        </button>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function () {
+      function esc(s) {
+        return String(s)
+          .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+          .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+      function get(k) { return sessionStorage.getItem('govuk_' + k) || ''; }
+      function date(prefix) {
+        var d = get(prefix + '-day'), m = get(prefix + '-month'), y = get(prefix + '-year');
+        return (d || m || y) ? [d, m, y].filter(Boolean).join(' / ') : '';
+      }
+      function row(key, value, page, label) {
+        var empty = !value;
+        var cls = empty ? 'govuk-summary-list__value govuk-summary-list__value--empty' : 'govuk-summary-list__value';
+        return '<div class="govuk-summary-list__row">' +
+          '<dt class="govuk-summary-list__key">' + esc(key) + '</dt>' +
+          '<dd class="' + cls + '">' + esc(value || 'Not provided') + '</dd>' +
+          '<dd class="govuk-summary-list__actions">' +
+            '<a href="' + page + '?change=true">Change<span class="govuk-visually-hidden"> ' + esc(label) + '</span></a>' +
+          '</dd></div>';
+      }
+
+      document.getElementById('summary-personal').innerHTML =
+        row('Given names',   get('given-names'), 'sw-page1.html', 'given names') +
+        row('Last name',     get('last-name'),   'sw-page1.html', 'last name') +
+        row('Date of birth', date('dob'),        'sw-page1.html', 'date of birth') +
+        row('Sex',           get('sex'),         'sw-page1.html', 'sex') +
+        row('Nationality',   get('nationality'), 'sw-page1.html', 'nationality');
+
+      document.getElementById('summary-contact').innerHTML =
+        row('Email address',        get('email'),          'sw-page2.html', 'email address') +
+        row('UK telephone number',  get('telephone'),      'sw-page2.html', 'telephone number') +
+        row('Building and street',  get('address-line-1'), 'sw-page2.html', 'building and street') +
+        row('Town or city',         get('town'),           'sw-page2.html', 'town or city') +
+        row('Postcode',             get('postcode'),       'sw-page2.html', 'postcode');
+
+      document.getElementById('summary-identity').innerHTML =
+        row('Passport number',                get('passport-number'), 'sw-page3.html', 'passport number') +
+        row('Passport expiry date',           date('passport-expiry'), 'sw-page3.html', 'passport expiry date') +
+        row('Current immigration permission', get('current-status'),  'sw-page3.html', 'current permission') +
+        row('BRP number',                     get('brp-number'),      'sw-page3.html', 'BRP number') +
+        row('Permission expiry date',         date('visa-expiry'),    'sw-page3.html', 'permission expiry date');
+
+      document.getElementById('summary-job').innerHTML =
+        row('Certificate of sponsorship reference', get('cos-ref'),         'sw-page4.html', 'certificate of sponsorship reference') +
+        row('Job title',                            get('job-title'),       'sw-page4.html', 'job title') +
+        row('Occupation code',                      get('occupation-code'), 'sw-page4.html', 'occupation code') +
+        row('Name of sponsor',                      get('sponsor-name'),    'sw-page4.html', 'name of sponsor') +
+        row('Sponsor licence number',               get('sponsor-licence'), 'sw-page4.html', 'sponsor licence number') +
+        row('Gross yearly salary',                  get('salary'),          'sw-page4.html', 'gross yearly salary') +
+        row('Hours a week',                         get('weekly-hours'),    'sw-page4.html', 'hours a week') +
+        row('Job start date',                       date('job-start'),      'sw-page4.html', 'job start date');
+
+      document.getElementById('summary-english').innerHTML =
+        row('English language requirement', get('english'),       'sw-page5.html', 'English language requirement') +
+        row('Money available',              get('savings'),       'sw-page5.html', 'money available') +
+        row('Sponsor covers maintenance',   get('maintenance'),   'sw-page5.html', 'sponsor covers maintenance') +
+        row('Criminal convictions',         get('convictions'),   'sw-page5.html', 'criminal convictions') +
+        row('Anything else',                get('extra-info'),    'sw-page5.html', 'anything else');
+    })();
+  </script>
+</body>
+</html>

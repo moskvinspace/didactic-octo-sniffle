@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your job and sponsorship – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Switch to a Skilled Worker visa</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="sw-page3.html" class="govuk-back-link">Back</a>
+
+      <span class="govuk-caption-l">Switch to a Skilled Worker visa</span>
+      <h1 class="govuk-heading-xl">Your job and sponsorship</h1>
+
+      <form action="sw-page5.html" method="GET" novalidate>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="cos-ref">
+            Certificate of sponsorship reference number
+          </label>
+          <div class="govuk-hint" id="cos-ref-hint">
+            This is on the certificate of sponsorship from your employer
+          </div>
+          <input class="govuk-input govuk-input--width-20" type="text" id="cos-ref" name="cos-ref" aria-describedby="cos-ref-hint">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="job-title">
+            Job title
+          </label>
+          <input class="govuk-input" type="text" id="job-title" name="job-title">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="occupation-code">
+            Occupation code for the job
+          </label>
+          <div class="govuk-hint" id="occupation-code-hint">
+            The 4-digit standard occupational classification (SOC) code
+          </div>
+          <input class="govuk-input govuk-input--width-5" type="text" id="occupation-code" name="occupation-code" aria-describedby="occupation-code-hint">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sponsor-name">
+            Name of your sponsor
+          </label>
+          <input class="govuk-input" type="text" id="sponsor-name" name="sponsor-name">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="sponsor-licence">
+            Sponsor licence number
+          </label>
+          <input class="govuk-input govuk-input--width-10" type="text" id="sponsor-licence" name="sponsor-licence">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="salary">
+            Gross yearly salary in pounds
+          </label>
+          <div class="govuk-hint" id="salary-hint">
+            Enter the amount before tax, in pounds, with no commas
+          </div>
+          <input class="govuk-input govuk-input--width-10" type="text" id="salary" name="salary" inputmode="numeric" aria-describedby="salary-hint">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="weekly-hours">
+            How many hours a week is the job?
+          </label>
+          <input class="govuk-input govuk-input--width-5" type="text" id="weekly-hours" name="weekly-hours" inputmode="numeric">
+        </div>
+
+        <fieldset class="govuk-fieldset">
+          <legend>When does your job start?</legend>
+          <div class="govuk-hint" id="job-start-hint">For example, 1 10 2026</div>
+          <div class="govuk-date-input">
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="job-start-day">Day</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="job-start-day" name="job-start-day" min="1" max="31" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="job-start-month">Month</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="job-start-month" name="job-start-month" min="1" max="12" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="job-start-year">Year</label>
+              <input class="govuk-input govuk-input--width-4" type="number" id="job-start-year" name="job-start-year" min="2000" max="2099" inputmode="numeric">
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="assets/form.js"></script>
+  <script>
+    GovukForm.init({
+      next: 'sw-page5.html',
+      fields: [
+        { key: 'cos-ref', kind: 'text', required: 'Enter the certificate of sponsorship reference number' },
+        { key: 'job-title', kind: 'text', required: 'Enter your job title' },
+        { key: 'occupation-code', kind: 'text', required: 'Enter the occupation code for the job' },
+        { key: 'sponsor-name', kind: 'text', required: 'Enter the name of your sponsor' },
+        { key: 'sponsor-licence', kind: 'text', required: 'Enter the sponsor licence number' },
+        { key: 'salary', kind: 'text', required: 'Enter the gross yearly salary' },
+        { key: 'weekly-hours', kind: 'text', required: 'Enter how many hours a week the job is' },
+        { key: 'job-start-day', kind: 'text', required: 'Enter the day the job starts',
+          validate: GovukForm.validators.intRange(1, 31, 'Day must be between 1 and 31') },
+        { key: 'job-start-month', kind: 'text', required: 'Enter the month the job starts',
+          validate: GovukForm.validators.intRange(1, 12, 'Month must be between 1 and 12') },
+        { key: 'job-start-year', kind: 'text', required: 'Enter the year the job starts',
+          validate: GovukForm.validators.intRange(2000, 2099, 'Year must be between 2000 and 2099') }
+      ]
+    });
+  </script>
+</body>
+</html>

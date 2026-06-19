@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identity and current permission – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Switch to a Skilled Worker visa</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="sw-page2.html" class="govuk-back-link">Back</a>
+
+      <span class="govuk-caption-l">Switch to a Skilled Worker visa</span>
+      <h1 class="govuk-heading-xl">Identity and current permission</h1>
+
+      <form action="sw-page4.html" method="GET" novalidate>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="passport-number">
+            Passport number
+          </label>
+          <input class="govuk-input govuk-input--width-10" type="text" id="passport-number" name="passport-number">
+        </div>
+
+        <fieldset class="govuk-fieldset">
+          <legend>Passport expiry date</legend>
+          <div class="govuk-hint" id="pp-exp-hint">For example, 30 11 2031</div>
+          <div class="govuk-date-input">
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="passport-expiry-day">Day</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="passport-expiry-day" name="passport-expiry-day" min="1" max="31" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="passport-expiry-month">Month</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="passport-expiry-month" name="passport-expiry-month" min="1" max="12" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="passport-expiry-year">Year</label>
+              <input class="govuk-input govuk-input--width-4" type="number" id="passport-expiry-year" name="passport-expiry-year" min="2000" max="2099" inputmode="numeric">
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="current-status">
+            Your current immigration permission
+          </label>
+          <div class="govuk-hint" id="current-status-hint">
+            The visa or status you hold now and are switching from
+          </div>
+          <select class="govuk-select" id="current-status" name="current-status" aria-describedby="current-status-hint">
+            <option value="">Choose your current permission</option>
+            <option value="Student visa">Student visa</option>
+            <option value="Graduate visa">Graduate visa</option>
+            <option value="Skilled Worker visa">Skilled Worker visa</option>
+            <option value="Health and Care Worker visa">Health and Care Worker visa</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="brp-number">
+            Biometric residence permit (BRP) number
+          </label>
+          <input class="govuk-input govuk-input--width-10" type="text" id="brp-number" name="brp-number">
+        </div>
+
+        <fieldset class="govuk-fieldset">
+          <legend>When does your current permission expire?</legend>
+          <div class="govuk-hint" id="visa-exp-hint">For example, 30 9 2026</div>
+          <div class="govuk-date-input">
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="visa-expiry-day">Day</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="visa-expiry-day" name="visa-expiry-day" min="1" max="31" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="visa-expiry-month">Month</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="visa-expiry-month" name="visa-expiry-month" min="1" max="12" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="visa-expiry-year">Year</label>
+              <input class="govuk-input govuk-input--width-4" type="number" id="visa-expiry-year" name="visa-expiry-year" min="2000" max="2099" inputmode="numeric">
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="assets/form.js"></script>
+  <script>
+    GovukForm.init({
+      next: 'sw-page4.html',
+      fields: [
+        { key: 'passport-number', kind: 'text', required: 'Enter your passport number' },
+        { key: 'passport-expiry-day', kind: 'text', required: 'Enter the day your passport expires',
+          validate: GovukForm.validators.intRange(1, 31, 'Day must be between 1 and 31') },
+        { key: 'passport-expiry-month', kind: 'text', required: 'Enter the month your passport expires',
+          validate: GovukForm.validators.intRange(1, 12, 'Month must be between 1 and 12') },
+        { key: 'passport-expiry-year', kind: 'text', required: 'Enter the year your passport expires',
+          validate: GovukForm.validators.intRange(2000, 2099, 'Year must be between 2000 and 2099') },
+        { key: 'current-status', kind: 'text', required: 'Select your current immigration permission' },
+        { key: 'brp-number', kind: 'text', required: 'Enter your biometric residence permit number' },
+        { key: 'visa-expiry-day', kind: 'text', required: 'Enter the day your permission expires',
+          validate: GovukForm.validators.intRange(1, 31, 'Day must be between 1 and 31') },
+        { key: 'visa-expiry-month', kind: 'text', required: 'Enter the month your permission expires',
+          validate: GovukForm.validators.intRange(1, 12, 'Month must be between 1 and 12') },
+        { key: 'visa-expiry-year', kind: 'text', required: 'Enter the year your permission expires',
+          validate: GovukForm.validators.intRange(2000, 2099, 'Year must be between 2000 and 2099') }
+      ]
+    });
+  </script>
+</body>
+</html>

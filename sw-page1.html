@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your personal details – Application Form</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <header class="app-header" role="banner">
+    <div class="app-header__container">
+      <a href="index.html" class="app-header__logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <rect width="32" height="32" rx="4" fill="#1d70b8"/>
+          <path d="M8 22L13 10L16 18L19 14L24 22H8Z" fill="white"/>
+          <circle cx="22" cy="11" r="3" fill="white"/>
+        </svg>
+        Application Service
+      </a>
+      <span class="app-header__service">Switch to a Skilled Worker visa</span>
+    </div>
+  </header>
+
+  <div class="govuk-width-container">
+    <main id="main-content">
+      <a href="index.html" class="govuk-back-link">Back</a>
+
+      <span class="govuk-caption-l">Switch to a Skilled Worker visa</span>
+      <h1 class="govuk-heading-xl">Your personal details</h1>
+
+      <form action="sw-page2.html" method="GET" novalidate>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="given-names">
+            Given names (first and middle names)
+          </label>
+          <input class="govuk-input" type="text" id="given-names" name="given-names" autocomplete="given-name">
+        </div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="last-name">
+            Last name
+          </label>
+          <input class="govuk-input" type="text" id="last-name" name="last-name" autocomplete="family-name">
+        </div>
+
+        <fieldset class="govuk-fieldset" aria-describedby="dob-hint">
+          <legend>Date of birth</legend>
+          <div class="govuk-hint" id="dob-hint">For example, 27 3 1992</div>
+          <div class="govuk-date-input">
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="dob-day">Day</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="dob-day" name="dob-day" min="1" max="31" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="dob-month">Month</label>
+              <input class="govuk-input govuk-input--width-2" type="number" id="dob-month" name="dob-month" min="1" max="12" inputmode="numeric">
+            </div>
+            <div class="govuk-date-input__item govuk-form-group">
+              <label class="govuk-label" for="dob-year">Year</label>
+              <input class="govuk-input govuk-input--width-4" type="number" id="dob-year" name="dob-year" min="1900" max="2099" inputmode="numeric">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="govuk-fieldset">
+          <legend>Sex</legend>
+          <div class="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sex-male" name="sex" type="radio" value="Male">
+              <label class="govuk-label govuk-radios__label" for="sex-male">Male</label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sex-female" name="sex" type="radio" value="Female">
+              <label class="govuk-label govuk-radios__label" for="sex-female">Female</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="nationality">
+            Nationality
+          </label>
+          <select class="govuk-select" id="nationality" name="nationality">
+            <option value="">Choose a nationality</option>
+            <option value="India">India</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Philippines">Philippines</option>
+            <option value="China">China</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <button type="submit" class="govuk-button">Continue</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="assets/form.js"></script>
+  <script>
+    GovukForm.init({
+      next: 'sw-page2.html',
+      fields: [
+        { key: 'given-names', kind: 'text', required: 'Enter your given names' },
+        { key: 'last-name', kind: 'text', required: 'Enter your last name' },
+        { key: 'dob-day', kind: 'text', required: 'Enter your day of birth',
+          validate: GovukForm.validators.intRange(1, 31, 'Day of birth must be between 1 and 31') },
+        { key: 'dob-month', kind: 'text', required: 'Enter your month of birth',
+          validate: GovukForm.validators.intRange(1, 12, 'Month of birth must be between 1 and 12') },
+        { key: 'dob-year', kind: 'text', required: 'Enter your year of birth',
+          validate: GovukForm.validators.intRange(1900, 2010, 'Year of birth must be between 1900 and 2010') },
+        { key: 'sex', kind: 'radio', required: 'Select your sex' },
+        { key: 'nationality', kind: 'text', required: 'Select your nationality' }
+      ]
+    });
+  </script>
+</body>
+</html>
